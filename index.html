@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RESPAWN | إدارة قاعة الألعاب</title>
+    <title>RESPAWN | Dashboard</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -12,64 +12,60 @@
 <div class="hero-bg">
     <header>
         <div class="logo">RESPAWN</div>
-        <div class="logo-sub">قاعة الألعاب</div>
+        <div class="logo-sub">قاعة الألعاب الذكية</div>
         <div class="hline"></div>
     </header>
-    <nav id="main-nav">
+    <nav>
         <button class="nb active" onclick="showSec('home', this)">🏠 الرئيسية</button>
-        <button class="nb" onclick="showSec('tables', this)">🎮 الطاولات</button>
+        <button class="nb" onclick="showSec('tables', this)">🎮 الطاولات والأجهزة</button>
         <button class="nb" onclick="showSec('menu', this)">🍜 المنيو</button>
-        <button class="nb" onclick="showSec('prices', this)">💰 الأسعار</button>
         <button class="nb" onclick="showSec('profits', this)">📊 الأرباح</button>
     </nav>
 </div>
 
 <main>
     <section id="home" class="sec visible">
-        <div style="text-align:center; padding:28px 0;">
-            <h2 style="font-size:30px;">أهلاً بك في <span style="color:var(--c)">RESPAWN</span></h2>
-            <p style="color:var(--ts); margin-top:10px;">إدارة ذكية لبلياردو، بلي ستيشن، وحاسبات</p>
+        <div class="welcome-text">
+            <h2>أهلاً بك في <span style="color:var(--c)">RESPAWN</span></h2>
+            <p>نظام إدارة الصالة الشامل</p>
         </div>
         <div class="hcards">
-            <div class="hcard c1" onclick="gotoSection('tables')"><span class="hicon">🎱</span><h3>المنضدة</h3><p>2 طاولة</p></div>
+            <div class="hcard c1" onclick="gotoSection('tables')"><span class="hicon">🎱</span><h3>البلياردو</h3><p>2 طاولة</p></div>
             <div class="hcard c2" onclick="gotoSection('tables')"><span class="hicon">🎮</span><h3>بلي ستيشن</h3><p>7 أجهزة</p></div>
             <div class="hcard c3" onclick="gotoSection('tables')"><span class="hicon">💻</span><h3>حاسبات</h3><p>8 أجهزة</p></div>
-            <div class="hcard c4" onclick="gotoSection('menu')"><span class="hicon">🍜</span><h3>المنيو</h3><p>قائمة الطعام</p></div>
+            <div class="hcard c4" onclick="gotoSection('menu')"><span class="hicon">🍜</span><h3>المنيو</h3><p>طلبات الطعام</p></div>
         </div>
     </section>
 
     <section id="tables" class="sec">
-        <div class="stitle"><span class="d"></span> إدارة الطاولات</div>
-        <div class="sumbar">
-            <div class="sc"><div class="sv" style="color:var(--ts)">12</div><div class="sl">فارغة</div></div>
-            <div class="sc"><div class="sv" style="color:var(--c)">5</div><div class="sl">مشغولة</div></div>
-            <div class="sc"><div class="sv" style="color:var(--g)">2</div><div class="sl">مفتوح</div></div>
-        </div>
-        <div class="zones-wrap">
-            <div class="zone-banner zb-pool">
-                <div class="zone-title">🎱 منطقة البلياردو</div>
-            </div>
-            <div class="tgrid">
-                <div class="tc">
-                    <div class="tc-head"><span class="tc-num">T1</span> <span class="sbadge sb-free">فارغة</span></div>
-                    <div class="tc-disp">00:00</div>
-                    <div class="tc-btns"><button class="tb">تشغيل</button></div>
-                </div>
-            </div>
-        </div>
+        <div class="stitle"><span class="d"></span> إدارة الصالة المباشرة</div>
+        
+        <div class="zone-banner zb-pool"><h3>🎱 منطقة البلياردو</h3></div>
+        <div class="tgrid" id="pool-grid"></div>
+
+        <div class="zone-banner zb-ps" style="margin-top:40px;"><h3>🎮 أجهزة البلي ستيشن</h3></div>
+        <div class="tgrid" id="ps-grid"></div>
+
+        <div class="zone-banner zb-pc" style="margin-top:40px;"><h3>💻 منطقة الحاسبات (PC)</h3></div>
+        <div class="tgrid" id="pc-grid"></div>
+    </section>
+
+    <section id="menu" class="sec">
+        <div class="stitle"><span class="d" style="background:var(--am)"></span> قائمة الطعام والشراب</div>
+        <div class="menu-page-grid" id="menu-grid"></div>
     </section>
 
     <section id="profits" class="sec">
-        <div class="stitle"><span class="d" style="background:var(--g)"></span> الأرباح والتقارير</div>
+        <div class="stitle"><span class="d" style="background:var(--g)"></span> ملخص أرباح اليوم</div>
         <div class="pcards">
-            <div class="pcrd"><div class="pcrd-val" style="color:var(--g)">145,000</div><div class="pcrd-lbl">اليوم</div></div>
-            <div class="pcrd"><div class="pcrd-val" style="color:var(--c)">1,240,000</div><div class="pcrd-lbl">الشهر</div></div>
+            <div class="pcrd"><div class="pcrd-val" style="color:var(--g)">145,000</div><div class="pcrd-lbl">أرباح الأجهزة</div></div>
+            <div class="pcrd"><div class="pcrd-val" style="color:var(--am)">52,000</div><div class="pcrd-lbl">أرباح المنيو</div></div>
         </div>
     </section>
 </main>
 
 <footer>
-    تصميم <span>RESPAWN Control</span> &copy; 2026
+    نظام <span>RESPAWN</span> &copy; 2026 - الكفاءة في الإدارة
 </footer>
 
 <script src="script.js"></script>
